@@ -22,7 +22,7 @@ export const getCurrentUser = () => {
                 console.log(response.error)
             } else {
                 dispatch({
-                    type: SET_CURRENT_USER
+                    type: SET_CURRENT_USER,
                     user: response
                 })
             }
@@ -33,6 +33,50 @@ export const getCurrentUser = () => {
 
 export const signup = (credentials) => {
     return (dispatch) => {
-        fetch(`${URL}/signup`)
+        fetch(`${URL}/signup`, {
+            credentials: "include",
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify(credentials)
+        })
+        .then(resp => resp.json())
+        .then(response => {
+            if (response.error) {
+                console.log(response.error)
+            } else {
+                dispatch({
+                    type: SET_CURRENT_USER,
+                    user: response
+                })
+            }
+        })
+        .catch(console.log)
+    }
+}
+
+export const login = (credentials) => {
+    return (dispatch) => {
+        fetch(`${URL}/login`, {
+            credentials: "include",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(credentials),
+        })
+        .then(resp => resp.json())
+        .then(response => {
+            if (response.error) {
+                console.log(response)
+            } else {
+                dispatch({
+                    type: SET_CURRENT_USER,
+                    user: response
+                })
+            }
+        })
+        .catch(console.log)
     }
 }
