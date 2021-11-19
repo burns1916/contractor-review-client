@@ -1,7 +1,7 @@
 import {
     SET_CURRENT_USER,
     CLEAR_CURRENT_USER,
-    AUTH_USER,
+    BEGIN_AUTH,
     COMPLETE_AUTH,
 } from './actionTypes'
 
@@ -78,5 +78,46 @@ export const login = (credentials) => {
             }
         })
         .catch(console.log)
+    }
+}
+
+export const authUser = () => {
+    return dispatch => {
+        dispatch({ type: BEGIN_AUTH })
+        return fetch(`${URL}/get_current_user`, {
+            credentials: "include",
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        .then(resp => resp.json())
+        .then(response => {
+            if(response.error){
+                console.log(response)
+                dispatch({ type: COMPLETE_AUTH })
+                dispatch({ type: CLEAR_CURRENT_USER })
+            } else {
+                dispatch ({
+                    type: COMPLETE_AUTH,
+                    user: response
+                })
+                dispatch ({ type: SET_CURRENT_USER })
+            }
+        })
+        .catch(console.log)
+    }
+}
+
+export const logout = () => {
+    return dispatch => {
+        fetch(`${URL}/logout`, {
+            credentials: "include",
+            method: "DELETE",
+        })
+        .then(resp => resp.json())
+        .then(() => {
+            dispatch({ type: CLEAR_CURRENT_USER }),
+        })
     }
 }
