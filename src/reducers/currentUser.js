@@ -11,5 +11,11 @@ export function currentUser(state = { currentUser: {}, authComplete: false ), ac
             return { ...state, currentUser: action.user, }
         case CLEAR_CURRENT_USER:
             return null
+        case BEGIN_AUTH:
+            return { ...state, authComplete: false, }
+        case COMPLETE_AUTH:
+            return { ...state, authComplete: true, }
+        default:
+            return state
     }
 }  
