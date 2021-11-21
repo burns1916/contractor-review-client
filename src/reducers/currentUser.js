@@ -1,7 +1,6 @@
-import { currentUserReducer } from './currentUser'
-
-const rootReducer = combineReducers({
-    currentUser: currentUserReducer,
-})
-
-export default rootReducer
+import {
+    SET_CURRENT_USER,
+    CLEAR_CURRENT_USER,
+    BEGIN_AUTH,
+    COMPLETE_AUTH
+} from "../actionTypes"
