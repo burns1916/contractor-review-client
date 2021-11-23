@@ -15,16 +15,31 @@ class Login extends Component {
     }
 
     handleChange = ({ target }) => {
-
+        this.setState({[target.name]: target.value})
     }
 
     handleOnSubmit = (e) => {
         e.preventDefault()
+        this.props.login(this.state)
+        this.setState({
+            username: "",
+            password: "",
+        })
     }
 
     render() {
         return(
-            
+            <>
+            { !this.props.loggedIn ?
+            <form onSubmit={this.handleOnSubmit}>
+                <label>Name:</label>
+                <input type="text" placeholder="username" name="username" value={this.state.username} onChange={this.handleChange} />
+                <label>Password:</label>
+                <input type="password" placeholder="password" name="password" value={this.state.password} onChange={this.handleChange} />
+                <input type="submit" value="Log In" />
+            </form>
+            : <Redirect to='/'/> }
+            </>
         )
     }
 
@@ -36,4 +51,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default withRouter(connect(mapStateToProps, { login, getCurrentUser }){Login})
+export default withRouter(connect(mapStateToProps, { login, getCurrentUser })(Login))
