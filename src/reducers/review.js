@@ -4,14 +4,18 @@ import {
     GET_REVIEWS,
 } from "../actionTypes"
 
-export function reviewReducer(state = {}, action) {
+const initialState = {
+    reviews: []
+}
+
+export function reviewReducer(state = initialState, action) {
     switch(action.type) {
-        case ADD_REVIEW:
-            return
-        case DELETE_REVIEW:
-            return
         case GET_REVIEWS:
-            return
+            return {...state, reviews: action.reviews}
+        case ADD_REVIEW:
+            return {...state, reviews: [...state.reviews, action.review]}
+        case DELETE_REVIEW:
+            return {...state, reviews: [...state.reviews.filter((review) => review.id !== action.reviewId)]}
         default:
             return state
     }
