@@ -28,3 +28,28 @@ export const getAppointments = () => {
         })
     }
 }
+
+export const addAppointment = (credentials) => {
+    return (dispatch) => {
+        fetch(`${URL}/appointment`, {
+            credentials: "include",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(credentials)
+        })
+        .then(resp => resp.json())
+        .then(response => {
+            if (response.error) {
+                console.log(response.error)
+            } else {
+                dispatch({
+                    type: ADD_APPOINTMENT,
+                    appointment: response,
+                })
+            }
+        })
+        .catch(console.log)
+    }
+}
