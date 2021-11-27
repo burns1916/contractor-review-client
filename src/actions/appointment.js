@@ -53,3 +53,19 @@ export const addAppointment = (credentials) => {
         .catch(console.log)
     }
 }
+
+export const deleteAppointment = (appointmentId) => {
+    return dispatch => {
+        fetch(`${URL}/appointment/${appointmentId}`, {
+        credentials: "include",
+        method: "DELETE",
+        })
+        .then(resp => resp.json())
+        .then(() => {
+                dispatch ({
+                    type: DELETE_APPOINTMENT,
+                    appointmentId,
+                })
+            })
+    }
+}
