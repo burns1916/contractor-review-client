@@ -29,3 +29,28 @@ export const getReviews = () => {
         .catch(console.log)
     }
 }
+
+export const addReview = (credentials) => {
+    return dispatch => {
+        fetch(`${URL}/reviews`, {
+            credentials: "include",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(credentials),
+        })
+        .then(resp => resp.json())
+        .then(response => {
+            if (response.error) {
+                console.log(response.error)
+            } else {
+                dispatch ({
+                    type: ADD_REVIEW,
+                    review: response,
+                })
+            }
+        })
+        .catch(console.log)
+    }
+}
