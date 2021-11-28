@@ -9,7 +9,7 @@ const URL = "http://localhost:3001/"
 export const getAppointments = () => {
     return dispatch => {
         fetch(`${URL}/appointments`, {
-            crednetials: "include",
+            credentials: "include",
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

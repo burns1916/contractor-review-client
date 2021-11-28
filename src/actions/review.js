@@ -54,3 +54,19 @@ export const addReview = (credentials) => {
         .catch(console.log)
     }
 }
+
+export const deleteReview = (reviewId) => {
+    return dispatch => {
+        fetch(`${URL}/reviews/${reviewId}`, {
+            credentials: "include",
+            method: "DELETE",
+        })
+        .then(resp => resp.json())
+        .then(() => {
+            dispatch({
+                type: DELETE_REVIEW,
+                reviewId,
+            })
+        })
+    }
+}
