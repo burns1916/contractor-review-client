@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Switch, } from 'react-router-dom';
 import Header from './components/header';
+import NavBar from './components/NavBar';
 
 function App() {
   return (
@@ -8,7 +9,7 @@ function App() {
         <Router>
           <NavBar />
             <Switch>
-              
+
             </Switch>
         </Router>
     </div>
