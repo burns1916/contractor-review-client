@@ -1,3 +1,4 @@
+import { combineReducers } from 'redux';
 import { appointmentReducer } from './appointment'
 import { currentUserReducer } from './currentUser'
 import { reviewReducer } from './review'
