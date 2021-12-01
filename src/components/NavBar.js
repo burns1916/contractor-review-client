@@ -6,7 +6,18 @@ const NavBar = (props) => {
         <nav>
         {props.loggedIn ? 
         <div>
-            
+        <Link to='/'>
+            Home
+        </Link>
+        <Link to='/appointments'>
+            My Appointments
+        </Link>
+        <Link to='/reviews'>
+            My Reviews
+        </Link>
+        <Link to='/contractors'>
+            Contractors
+        </Link>
         </div>
         :
         <div>
