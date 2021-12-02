@@ -16,28 +16,28 @@ export const getAppointments = () => {
             },
         })
         .then(resp => resp.json())
-        .then(response => {
-            if (response.error) {
-                console.log(response.error)
-            } else {
-            dispatch({
+        .then(appointments => dispatch({
                 type: GET_APPOINTMENTS,
-                appointment: response,
+                appointments,
             })
-            }
         })
     }
 }
 
-export const addAppointment = (credentials) => {
+export const addAppointment = (appointmentData) => {
     return (dispatch) => {
+        const sendableAppointmentData = {
+            jobName: appointmentData.jobName,
+            jobDescription: appointmentData.jobDescription,
+            appointmentTime: appointmentData.appointmentTime,
+        }
         fetch(`${URL}/appointment`, {
             credentials: "include",
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(credentials)
+            body: JSON.stringify(sendableAppointmentData)
         })
         .then(resp => resp.json())
         .then(response => {
