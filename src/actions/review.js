@@ -16,29 +16,27 @@ export const getReviews = () => {
             },
         })
         .then(resp => resp.json())
-        .then(response => {
-            if (response.error) {
-                console.log(response.error)
-            } else {
-                dispatch({
+        .then(response => dispatch({
                     type: GET_REVIEWS,
                     reviews: response,
                 })
-            }
-        })
-        .catch(console.log)
+        )
     }
 }
 
-export const addReview = (credentials) => {
+export const addReview = (reviewData) => {
     return dispatch => {
+        const sendableReviewData = {
+            rating: reviewData.rating,
+            content: reviewData.content,
+        }
         fetch(`${URL}/reviews`, {
             credentials: "include",
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(credentials),
+            body: JSON.stringify(sendableReviewData),
         })
         .then(resp => resp.json())
         .then(response => {

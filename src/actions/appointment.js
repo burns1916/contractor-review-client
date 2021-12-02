@@ -20,7 +20,7 @@ export const getAppointments = () => {
                 type: GET_APPOINTMENTS,
                 appointments,
             })
-        })
+        )
     }
 }
 
