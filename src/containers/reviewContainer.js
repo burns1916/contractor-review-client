@@ -12,4 +12,11 @@ class ReviewContainer extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        reviews: state.reviews,
+        currentUser: state.currentUser
+    }
+}
+
 export default connect(mapStateToProps, { getReviews, addReview })(ReviewContainer)

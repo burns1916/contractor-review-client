@@ -14,4 +14,11 @@ class AppointmentContainer extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        appointments: state.appointment,
+        currentUser: state.currentUser
+    }
+}
+
 export default connect(mapStateToProps, { addAppointment, getAppointments, })(AppointmentContainer)
