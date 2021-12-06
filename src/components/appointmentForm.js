@@ -1,6 +1,6 @@
 const AppoinmentForm = (props) => {
 
-    const { onChange, onSubmit, jobName, jobDescription, appointmentTime} = props
+    const { onChange, onSubmit, jobName, jobDescription, appointmentTime } = props
 
     return(
         <>
