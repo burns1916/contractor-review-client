@@ -21,4 +21,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { addAppointment, getAppointments, })(AppointmentContainer)
+export default connect(mapStateToProps, { addAppointment, getAppointments })(AppointmentContainer)
