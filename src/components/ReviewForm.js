@@ -4,9 +4,9 @@ const reviewForm = (props) => {
 
     return (
         <form onSubmit={onSubmit}>
-            <label for='rating'>Rating</label>
+            <label htmlFor='rating'>Rating</label>
                 <input type="text" name="rating" placeholder="rating" value={rating} onChange={onChange} />
-            <label for="content">Content</label>
+            <label htmlFor="content">Content</label>
                 <input type="text" name="content" placeholder="content" value={content} onChange={onChange} />
         </form>
     )

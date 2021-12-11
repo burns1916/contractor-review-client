@@ -1,14 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAppointments, addAppointment } from '../actions/appointment'
+import AppointmentForm from '../components/appointmentForm';
+
 
 
 class AppointmentContainer extends Component {
 
+    state = {
+
+    }
+
+    componentDidMount() {
+        this.props.getAppointments()
+    }
+
+
+
     render() {
         return (
             <>
-
+                <AppointmentForm />
             </>
         )
     }

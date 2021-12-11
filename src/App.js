@@ -1,9 +1,12 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Header from './components/header';
+import Header from './components/Header';
 import NavBar from './components/NavBar';
-import Home from './components/home';
-import SignUp from './components/signup';
+import Home from './components/Home';
+import SignUp from './components/Signup';
 import Login from './componentes/login';
+import AppointmentContainer from './containers/AppointmentContainer';
+import ReviewContainer from './containers/ReviewContainer';
+
 
 
 function App() {
@@ -16,7 +19,8 @@ function App() {
               <Route exact path='/' component={Home} />
               <Route exact path='/signup' component={SignUp} />
               <Route exact path='/login' component={Login} />
-              
+              <Route exact path='/appointments' component={AppointmentContainer} />
+              <Route exact path='/reviews' component={ReviewContainer} />
             </Switch>
         </Router>
     </div>
