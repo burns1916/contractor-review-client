@@ -3,7 +3,7 @@ import {
     CLEAR_CURRENT_USER,
     BEGIN_AUTH,
     COMPLETE_AUTH,
-} from './actionTypes'
+} from '../actionTypes'
 
 const URL = 'http://localhost:3001'
 
@@ -114,10 +114,10 @@ export const logout = () => {
         fetch(`${URL}/logout`, {
             credentials: "include",
             method: "DELETE",
-        })
+    })
         .then(resp => resp.json())
         .then(() => {
-            dispatch({ type: CLEAR_CURRENT_USER }),
+            dispatch({ type: CLEAR_CURRENT_USER })
         })
     }
 }

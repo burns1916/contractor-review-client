@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const NavBar = (props) => {
     return (
         <nav>
-        {props.loggedIn ? 
+        {!props.loggedIn ? 
         <div>
         <Link to='/'>
             Home
