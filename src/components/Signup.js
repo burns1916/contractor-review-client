@@ -5,19 +5,27 @@ import { signup, getCurrentUser } from '../actions/currentUser';
 
 const SignUp = (props) => {
 
-    const [userName, setUserName] = useState('')
+    const [email, setEmail] = useState('')
 
     const [password, setPassword] = useState('')
+
+    const [metaType, setMetaType] = useState('')
+
+    const [name, setName] = useState('')
+
+    const [businessName, setBusinessName] = useState('')
+
+    const [licenseNumber, setLicenseNumber] = useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if(!userName || !password) {
+        if(!email || !password) {
             alert("Please add username and password")
         } else {
-        props.signup({userName, password})
+        props.signup({email, password})
         }
-        setUserName('')
+        setEmail('')
         setPassword('')
     }
 
@@ -25,9 +33,34 @@ const SignUp = (props) => {
             <>
             <form onSubmit={handleSubmit}>
                 <label>Username:</label>
-                <input type="text" placeholder="username" value={userName} onChange={(e) => setUserName(e.target.value)} />
+                <input type="text" placeholder="Email" name={email} value={email} onChange={(e) => setEmail(e.target.value)} />
+                <br />
                 <label>Password:</label>
-                <input type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <input type="password" placeholder="Password" name={password} value={password} onChange={(e) => setPassword(e.target.value)} />
+                <br /> 
+                <label>Account Type:</label>
+                <br />
+                <input type="radio" name={metaType} value="client" checked={metaType === "client"} onChange={(e) => setMetaType(e.target.value)} />
+                <label>Client</label>
+                <br />
+                <input type="radio" name={metaType} value="contractor" checked={metaType === "contractor"} onChange={(e) => setMetaType(e.target.value)} />
+                <label>Contractor</label>
+                <br />
+                {metaType === "client" ?
+                    <>
+                    <label>Name: </label>
+                    <input type="text" placeholder="Name" name={name} value={name} onChange={(e) => setName(e.target.value)} />
+                    </>
+                    :
+                    <>
+                    <label>Business Name: </label>
+                    <input type="text" placeholder="Business Name" name={businessName} value={businessName} onChange={(e) => setBusinessName(e.target.value)} />
+                    <br />
+                    <label>License Number: </label>
+                    <input type="text" placeholder="License Number" name={licenseNumber} value={licenseNumber} onChange={(e) => setLicenseNumber(e.target.value)} />
+                    </>
+                    }
+                <br />
                 <input type="submit" value="Sign Up" />
             </form>
             </>
