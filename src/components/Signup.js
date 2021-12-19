@@ -9,7 +9,7 @@ const SignUp = (props) => {
 
     const [password, setPassword] = useState('')
 
-    const [metaType, setMetaType] = useState('')
+    const [metaType, setMetaType] = useState('client')
 
     const [name, setName] = useState('')
 
