@@ -23,10 +23,14 @@ const SignUp = (props) => {
         if(!email || !password) {
             alert("Please add username and password")
         } else {
-        props.signup({email, password})
+        props.signup({email, password, metaType, name, businessName, licenseNumber})
         }
         setEmail('')
         setPassword('')
+        setMetaType('client')
+        setName('')
+        setBusinessName('')
+        setLicenseNumber('')
     }
 
         return(

@@ -9,16 +9,22 @@ const Login = props => {
 
     const [password, setPassword] = useState('')
 
-    const onSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-
+        if (!email || !password) {
+            alert("Please enter Email and Password")
+        } else {
+            props.login({ email, password })
+        }
+        setEmail('')
+        setPassword('')
     }
 
         return(
             <>
             { props.loggedIn ?
-            <form onSubmit={onSubmit}>
-                <label>Name:</label>
+            <form onSubmit={handleSubmit}>
+                <label>Email:</label>
                 <input type="text" placeholder="Email" name={email} value={email} onChange={(e) => setEmail(e.target.value)} />
                 <label>Password:</label>
                 <input type="password" placeholder="Password" name={password} value={password} onChange={(e) => setPassword(e.target.value)} />
