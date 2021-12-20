@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { signup, getCurrentUser } from '../actions/currentUser';
 
 const SignUp = (props) => {
@@ -36,11 +36,11 @@ const SignUp = (props) => {
         return(
             <>
             <form onSubmit={handleSubmit}>
-                <label>Username:</label>
+                <label>Email:</label>
                 <input type="text" placeholder="Email" name={email} value={email} onChange={(e) => setEmail(e.target.value)} />
                 <br />
                 <label>Password:</label>
-                <input type="password" placeholder="Password" name={password} value={password} onChange={(e) => setPassword(e.target.value)} />
+                <input type="password" placeholder="Password" autoComplete="on" name={password} value={password} onChange={(e) => setPassword(e.target.value)} />
                 <br /> 
                 <label>Account Type:</label>
                 <br />

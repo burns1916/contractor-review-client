@@ -26,8 +26,10 @@ const Login = props => {
             <form onSubmit={handleSubmit}>
                 <label>Email:</label>
                 <input type="text" placeholder="Email" name={email} value={email} onChange={(e) => setEmail(e.target.value)} />
+                <br />
                 <label>Password:</label>
-                <input type="password" placeholder="Password" name={password} value={password} onChange={(e) => setPassword(e.target.value)} />
+                <input type="password" placeholder="Password" autoComplete="on" name={password} value={password} onChange={(e) => setPassword(e.target.value)} />
+                <br />
                 <input type="submit" value="Log In" />
             </form>
             : <Redirect to='/'/> }
