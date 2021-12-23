@@ -33,7 +33,7 @@ export const getCurrentUser = () => {
 
 export const signup = (credentials) => {
     return (dispatch) => {
-        fetch(`${URL}/signup`, {
+        fetch(`${URL}/${credentials.metaType}/signup`, {
             credentials: "include",
             method: "POST",
             headers: {

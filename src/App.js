@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import NavBar from './components/NavBar';
-// import Home from './components/Home';
+import Home from './components/Home';
 import SignUp from './components/Signup';
 import Login from './components/Login';
 import AppointmentContainer from './containers/AppointmentContainer';
@@ -16,7 +16,7 @@ function App() {
         <Router>
           <NavBar />
             <Switch>
-              {/* <Route exact path='/' component={Home} /> */}
+              <Route exact path='/' component={Home} />
               <Route exact path='/signup' component={SignUp} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/appointments' component={AppointmentContainer} />

@@ -5,12 +5,7 @@ import {
     COMPLETE_AUTH
 } from "../actionTypes"
 
-const initialState = {
-    currentUser: {},
-    authComplete: false,
-}
-
-export function currentUserReducer(state = initialState, action) {
+export function currentUserReducer(state = { currentUser: {}, authComplete: false }, action) {
     switch(action.type) {
         case SET_CURRENT_USER:
             return { ...state, currentUser: action.user, }
